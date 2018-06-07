@@ -29,3 +29,6 @@ Route::delete('logout', 'SessionsController@destroy')->name('logout');
 
 Route::get('/testcurl', 'UsersController@testcurl')->name('curl');
 Route::get('/teststormtimer', 'StormTimerController@store')->name('teststormtimer');
+
+//-----------------------------------------------------------------------
+Route::get('/attribute', 'PokemonTypeController@index')->name('attribute');

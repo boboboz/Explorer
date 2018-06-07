@@ -27,8 +27,8 @@ class AddForeginToPokemon extends Migration
     public function down()
     {
         Schema::table('pokemon', function (Blueprint $table) {
-            $table->dropForeign('type1');
-            $table->dropForeign('type2');
+            $table->dropForeign('pokemon_type1_foreign');
+            $table->dropForeign('pokemon_type2_foreign');
         });
     }
 }
