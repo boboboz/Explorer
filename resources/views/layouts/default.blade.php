@@ -13,8 +13,8 @@
     <body>
         @include('layouts._header')
 
-        <div class="container">
-            <div class="col-md-offset-1 col-md-10">
+        <div class="container-fluid">
+            <div class="col-md-offset-1 col-md-10 col-lg-offset-0 col-lg-12">
                 @include('shared._messages')
                 @yield('content')
                 @include('layouts._footer')
