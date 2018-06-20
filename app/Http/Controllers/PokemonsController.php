@@ -33,7 +33,16 @@ class PokemonsController extends Controller
     public function create()
     {
         $types = PokemonType::all();
-        return view('pokemons.create', compact('types'));
+        $last_pokemons = DB::table('pokemon')
+            ->leftJoin('pokemon_types as t1', 'pokemon.type1', '=', 't1.id')
+            ->leftJoin('pokemon_types as t2', 'pokemon.type2', '=', 't2.id')
+            ->select('pokemon.*', 't1.name as type1_name', 't2.name as type2_name')
+            ->latest()
+            ->limit(20)
+            ->get();
+
+        $next_noid = $last_pokemons[0]->no_id + 1;
+        return view('pokemons.create', compact('types', 'last_pokemons', 'next_noid'));
     }
 
     //store pokemon information
@@ -48,18 +57,18 @@ class PokemonsController extends Controller
 
         $pokemon = Pokemon::create([
             'no_id' => $request->no_id,
-            'name' => $request->name,
-            'name_en' => $request->name_en,
+            'name' => trim($request->name),
+            'name_en' => trim($request->name_en),
             'type1' => $request->type1,
             'type2' => $request->type2,
         ]);
 
         if($pokemon){
             session()->flash('success', '成功创建Pokemon '.$pokemon->name);
-            return redirect()->route('pokemons.index');
+            return redirect()->route('pokemons.create');
         }else{
             session()->flash('fail', '创建失败');
-            return redirect()->route('pokemons.index');
+            return redirect()->route('pokemons.create');
         }
     }
 }

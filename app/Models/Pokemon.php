@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Pokemon extends Model
 {
     protected $fillable = [
-        'no_id', 'name', 'name_en','type1',
+        'no_id', 'name', 'name_en','type1', 'type2'
     ];
 
     public function type1()
