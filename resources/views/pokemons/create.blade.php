@@ -11,8 +11,7 @@
         .pokemons .th{ background:#F1FADE; font-weight:bold; border-top:1px;}
     </style>
     <div class="col-md-offset-2 col-md-8 col-lg-offset-4 col-lg-4">
-        <h1> 创建pokemon
-        </h1>
+        <h1> @lang('messages.create_pokemon')</h1>
         <div class="panel-body">
             <form method="POST" action="{{ route('pokemons.store')}}">
                 {{ csrf_field() }}
