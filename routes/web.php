@@ -34,3 +34,4 @@ Route::get('/teststormtimer', 'StormTimerController@store')->name('teststormtime
 Route::get('/attribute', 'PokemonTypeController@index')->name('attribute');
 
 Route::resource('pokemons', 'PokemonsController');
+Route::resource('moves', 'MovesController');

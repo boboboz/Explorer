@@ -17,7 +17,8 @@ class CreatePmhaveMovesTable extends Migration
             $table->increments('id');
             $table->integer('p_id');
             $table->foreign('p_id')->references('no_id')->on('pokemon');
-            $table->integer('m_id');
+            $table->integer('m_id')->unsigned();
+            $table->foreign('m_id')->references('id')->on('moves');
             $table->timestamps();
         });
     }
@@ -29,7 +30,8 @@ class CreatePmhaveMovesTable extends Migration
      */
     public function down()
     {
-        $table->dropForeign('posts_p_id_foreign');
+        // $table->dropForeign('pmhave_moves_m_id_foreign');
+        // $table->dropForeign(['p_id']);
         Schema::dropIfExists('pmhave_moves');
     }
 }
