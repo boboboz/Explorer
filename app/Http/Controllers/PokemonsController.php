@@ -19,19 +19,26 @@ class PokemonsController extends Controller
         // dd($out);
         // error_log('out is '.json_encode($out), 3, 'F:\log\ll.log');
         // return view('pokemon.index', compact('pokemons'));
+
+        // $title = '创建精灵';
+        $title = __('messages.pokemons');
+
         $pokemons = DB::table('pokemon')
             ->leftJoin('pokemon_types as t1', 'pokemon.type1', '=', 't1.id')
             ->leftJoin('pokemon_types as t2', 'pokemon.type2', '=', 't2.id')
-            ->select('pokemon.*', 't1.name as type1_name', 't2.name as type2_name')
+            ->select('pokemon.*', 't1.name as type1_name', 't2.name as type2_name', 't1.color as type1_color', 't2.color as type2_color')
             ->get();
 
-        return view('pokemons.index', compact('pokemons'));
+        return view('pokemons.index', compact('title', 'pokemons'));
 
     }
 
     //show create pokemon's page
     public function create()
     {
+
+        $title = __('messages.create_pokemon');
+
         $types = PokemonType::all();
         $last_pokemons = DB::table('pokemon')
             ->leftJoin('pokemon_types as t1', 'pokemon.type1', '=', 't1.id')
@@ -42,7 +49,7 @@ class PokemonsController extends Controller
             ->get();
 
         $next_noid = $last_pokemons[0]->no_id + 1;
-        return view('pokemons.create', compact('types', 'last_pokemons', 'next_noid'));
+        return view('pokemons.create', compact('title', 'types', 'last_pokemons', 'next_noid'));
     }
 
     //store pokemon information

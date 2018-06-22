@@ -35,3 +35,4 @@ Route::get('/attribute', 'PokemonTypeController@index')->name('attribute');
 
 Route::resource('pokemons', 'PokemonsController');
 Route::resource('moves', 'MovesController');
+Route::get('checkmove/{name}', 'MovesController@checkMove')->name('moves.checkmove');

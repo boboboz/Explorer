@@ -5,6 +5,7 @@
         <link rel="stylesheet" href="/css/app.css">
         <link rel="stylesheet" href="/css/my.css">
         <link rel="stylesheet" href="/css/bootstrap.css">
+        <script language="JavaScript" src="/js/jquery.js"></script>
         <script language="JavaScript" src="/js/bootstrap.js"></script>
         <script language="JavaScript" src="/js/app.js"></script>
         <!-- <link rel="stylesheet" href="css/bootstrap-grid.css"> -->

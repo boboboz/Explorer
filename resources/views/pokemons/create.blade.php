@@ -1,5 +1,5 @@
 @extends('layouts.default')
-@section('title', '创建Pokemon')
+@section('title', "$title")
 @section('content')
     <style>
         .pokemons ul{ list-style:none; padding:0px; margin:0px; width:100%;
@@ -16,19 +16,19 @@
             <form method="POST" action="{{ route('pokemons.store')}}">
                 {{ csrf_field() }}
                 <div class="form-group">
-                    <label for="no_id">序号</label>
+                    <label for="no_id">@lang('messages.number')</label>
                     <input type="text" name="no_id" class="form-control" value="{{$next_noid}}">
                 </div>
                 <div class="form-group">
-                    <label for="name">名称</label>
+                    <label for="name">@lang('messages.name')</label>
                     <input type="text" name="name" class="form-control" value="{{old('name')}}">
                 </div>
                 <div class="form-group">
-                    <label for="name_en">英文名称</label>
+                    <label for="name_en">@lang('messages.name_en')</label>
                     <input type="text" name="name_en" class="form-control" value="{{old('name_en')}}">
                 </div>
                 <div class="form-group">
-                    <label for='type1'>属性1</label>
+                    <label for='type1'>@lang('messages.type1')</label>
                     <!-- <input type="select" name="type1" class="form-control" value=""> -->
                     <select name="type1" class="form-control">
                         @foreach($types as $type)
@@ -37,7 +37,7 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for='type2'>属性2</label>
+                    <label for='type2'>@lang('messages.type2')</label>
                     <select name="type2" class="form-control">
                         <option value="" selected='selected'>空</option>
                         @foreach($types as $type)
@@ -45,19 +45,19 @@
                         @endforeach
                     </select>
                 </div>
-                <button type="submit" class="btn btn-primary">确认</button>
+                <button type="submit" class="btn btn-primary">@lang('messages.submit')</button>
             </form>
             <div>
                 <h1>
-                    最近添加的Pokmeon
+                    @lang('messages.recently_added_pokemons')
                 </h1>
                 <div class="pokemons">
                     <ul class='th'>
-                        <li>序号</li>
-                        <li>名称</li>
-                        <li>英文名称</li>
-                        <li>属性1</li>
-                        <li>属性2</li>
+                        <li>@lang('messages.number')</li>
+                        <li>@lang('messages.name')</li>
+                        <li>@lang('messages.name_en')</li>
+                        <li>@lang('messages.type1')</li>
+                        <li>@lang('messages.type2')</li>
                     </ul>
                     @foreach($last_pokemons as $pokemon)
                     <ul>
