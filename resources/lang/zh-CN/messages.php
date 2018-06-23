@@ -12,12 +12,16 @@ return [
     'type2' => '属性2',
     'submit' => '提交',
 //------------------------------Move list--------------------------
-    'create_move' => '创建 技能',
-    'move_list' => "技能 列表",
+    'create_move' => '创建 招式',
+    'move_list' => "招式 列表",
+    'move' => '招式',
     'type' => '属性',
     'atk' => 'ATK',
     'cd' => 'CD',
     'description' => '描述',
+//-----------------------------pokemon have move list-------------------
+    'create_pmhavemv' => '创建 精灵宝可梦与招式关联',
+    'all' => '全部',
 ]
 
 

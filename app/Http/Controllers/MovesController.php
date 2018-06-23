@@ -59,15 +59,23 @@ class MovesController extends Controller
         }
     }
 
-    public function checkMove($name){
+    /**
+     * Check if the name is repeated
+     * @author liuyunbo
+     * @param  [type] $name [description]
+     * @return [type]       [description]
+     */
+    public function checkMove($name)
+    {
         $result = Move::where('name', $name)->firstOrFail();
         $message['data'] = '';
         if($result){
             $message['status'] = false;
-            return $message;
         }else{
             $message['status'] = true;
-            return $message;
         }
+        return $message;
     }
+
+
 }
