@@ -30,8 +30,8 @@ class CreatePmhaveMovesTable extends Migration
      */
     public function down()
     {
-        // $table->dropForeign('pmhave_moves_m_id_foreign');
-        // $table->dropForeign(['p_id']);
+        $table->dropForeign('pmhave_moves_m_id_foreign');
+        $table->dropForeign(['p_id']);
         Schema::dropIfExists('pmhave_moves');
     }
 }

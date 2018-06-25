@@ -12,8 +12,18 @@ use Illuminate\Support\Facades\DB;
 class PmHaveMoveController extends Controller
 {
     public function index(){
-        $pmhaveMoves = PmhaveMove::paginate(30);
-        return view('PmhaveMove.index', compact('pmhaveMoves'));
+        $title = __('messages.list_pmhavemv');
+
+        $pmMoves = DB::table('pokemon as p')
+            ->leftJoin('pmhave_moves as pmm', 'p.no_id', '=', 'pmm.p_id')
+            ->leftJoin('moves as m', 'm.id', '=', 'pmm.m_id')
+            ->selectRaw('p.no_id, p.name, group_concat(m.name) as mv_name')
+            ->groupBy('p.no_id', 'p.name')
+            ->orderBy('p.no_id')
+            // ->orderBy('pmm.m_id')
+            // ->having('p.no_id', '=', $p_id)
+            ->get();
+        return view('PmhaveMove.index', compact('title', 'pmMoves'));
     }
 
     public function create(){
@@ -70,6 +80,42 @@ class PmHaveMoveController extends Controller
     }
 
     /**
+     * get pokemon by type and get first pokemon's move
+     * @author liuyunbo
+     * @param  [type] $type_id [description]
+     * @return [type]          [description]
+     */
+    public function getPokemonAndMoveByType($type_id)
+    {
+        if($type_id != 0){
+            $pokemons = Pokemon::where('type1', '=', $type_id)
+                ->orWhere('type2', '=', $type_id)
+                ->get();
+        }else{
+            $pokemons = Pokemon::all();
+        }
+
+        $p_id = $pokemons[0]->no_id;
+        $pmMoves = DB::table('pokemon as p')
+            ->leftJoin('pmhave_moves as pmm', 'p.no_id', '=', 'pmm.p_id')
+            ->leftJoin('moves as m', 'm.id', '=', 'pmm.m_id')
+            // ->select('p.name as p_name', 'm.name as m_name')
+            ->selectRaw('p.no_id, p.name, group_concat(m.name) as mv_name')
+            // ->where('p.no_id', '=', $p_id)
+            ->groupBy('p.no_id', 'p.name')
+            ->having('p.no_id', '=', $p_id)
+            ->get();
+
+        $messages['pokemons'] = $pokemons;
+        $messages['pm_moves'] = $pmMoves[0];
+
+        return response()->json([
+            'messages' => $messages,
+            'status' => 'success'
+        ]);
+    }
+
+    /**
      * get move by type
      * @author liuyunbo
      * @param  [type] $type_id [description]
@@ -90,6 +136,12 @@ class PmHaveMoveController extends Controller
         ]);
     }
 
+    /**
+     * ajax store pm information
+     * @author liuyunbo
+     * @param  Request $request [description]
+     * @return [type]           [description]
+     */
     public function ajaxStore(Request $request)
     {
         $this->validate($request, [
@@ -119,6 +171,32 @@ class PmHaveMoveController extends Controller
         }
     }
 
+    /**
+     * get pokemon have moves
+     * @author liuyunbo
+     * @param  [type] $p_id [description]
+     * @return [type]       [description]
+     */
+    public function getPokemonMove($p_id)
+    {
+        $pmMoves = DB::table('pokemon as p')
+            ->leftJoin('pmhave_moves as pmm', 'p.no_id', '=', 'pmm.p_id')
+            ->leftJoin('moves as m', 'm.id', '=', 'pmm.m_id')
+            // ->select('p.name as p_name', 'm.name as m_name')
+            ->selectRaw('p.no_id, p.name, group_concat(m.name) as mv_name')
+            // ->where('p.no_id', '=', $p_id)
+            ->groupBy('p.no_id', 'p.name')
+            ->having('p.no_id', '=', $p_id)
+            ->get();
+        $errno = 0;
+        if(!$pmMoves){
+            $errno = 1;
+        }
+        return response()->json([
+            'errno' => $errno,
+            'messages' => $pmMoves,
+        ]);
+    }
 
 
 }

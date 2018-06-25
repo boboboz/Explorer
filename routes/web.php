@@ -40,6 +40,8 @@ Route::resource('phavem', 'PmHaveMoveController');
 Route::get('checkmove/{name}', 'MovesController@checkMove')->name('moves.checkmove');
 
 Route::get('getPokemonByType/{type_id}', 'PmHaveMoveController@getPokemonByType')->name('phavem.getpm');
+Route::get('getPokemonMvByType/{type_id}', 'PmHaveMoveController@getPokemonAndMoveByType')->name('phavem.getpmmv');
 Route::get('getMoveByType/{type_id}', 'PmHaveMoveController@getMoveByType')->name('phavem.getmv');
+Route::get('getPmMove/{p_id}', 'PmHaveMoveController@getPokemonMove')->name('showPmMove');
 
 Route::post('phavem/aj_store', 'PmHaveMoveController@ajaxStore')->name('aj_store');

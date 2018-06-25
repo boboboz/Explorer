@@ -78,4 +78,7 @@ class PokemonsController extends Controller
             return redirect()->route('pokemons.create');
         }
     }
+
+
+
 }

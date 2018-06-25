@@ -21,7 +21,9 @@ return [
     'description' => '描述',
 //-----------------------------pokemon have move list-------------------
     'create_pmhavemv' => '创建 精灵宝可梦与招式关联',
+    'list_pmhavemv' => '精灵招式 列表',
     'all' => '全部',
+    'null' => '空',
 ]
 
 
