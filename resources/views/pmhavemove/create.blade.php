@@ -73,7 +73,6 @@
                 if(pokemon){
                     $.get("/getPmMove/"+pokemon, function(data, status)
                     {
-                        $('#move').empty();
                         var all = data.messages;
 
                         $('.pmhaveMove').empty();

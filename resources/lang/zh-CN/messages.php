@@ -24,6 +24,8 @@ return [
     'list_pmhavemv' => '精灵招式 列表',
     'all' => '全部',
     'null' => '空',
+//-----------------------------home--------------------------------
+    'hello_pokemon_trainer' => '欢迎&nbsp;&nbsp;&nbsp;&nbsp;精灵宝可梦训练师',
 ]
 
 
