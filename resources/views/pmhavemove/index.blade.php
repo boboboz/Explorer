@@ -2,34 +2,15 @@
 @section('title', $title)
 @section('content')
     <style media="screen">
-        .number{
-            width: 10%;
-        }
-        .short{
-            width: 20%;
-        }
-        .long{
-            width: 70%;
-        }
-        .showTable{
-            width: 100%;
-            text-align: center;
-            font-size: 14px;
-        }
-        .showTable tr th{
-            border: 1px solid #000;
-        }
-        .showTable tr td{
-            border: 1px solid #000;
-        }
+
     </style>
     <div class="col-md-offset-2 col-md-8 col-lg-offset-0 col-lg-12">
-        <h1>@lang('messages.list_pmhavemv')</h1>
+        @include("div_part._divpart")
         <table class="showTable">
             <tr>
-                <th class="number">@lang('messages.number')</th>
-                <th class="short">@lang('messages.name')</th>
-                <th class="long">@lang('messages.move')</th>
+                <th class="phavem_number">@lang('messages.number')</th>
+                <th class="phavem_short">@lang('messages.name')</th>
+                <th class="phavem_long">@lang('messages.move')</th>
             </tr>
             @foreach($pmMoves as $pmMove)
                 <tr class="pmhaveMove">

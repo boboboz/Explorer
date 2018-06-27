@@ -13,6 +13,7 @@ class PmHaveMoveController extends Controller
 {
     public function index(){
         $title = __('messages.list_pmhavemv');
+        $create_path = "/phavem/create";
 
         $pmMoves = DB::table('pokemon as p')
             ->leftJoin('pmhave_moves as pmm', 'p.no_id', '=', 'pmm.p_id')
@@ -23,7 +24,7 @@ class PmHaveMoveController extends Controller
             // ->orderBy('pmm.m_id')
             // ->having('p.no_id', '=', $p_id)
             ->get();
-        return view('PmhaveMove.index', compact('title', 'pmMoves'));
+        return view('PmhaveMove.index', compact('title', 'pmMoves', 'create_path'));
     }
 
     public function create(){

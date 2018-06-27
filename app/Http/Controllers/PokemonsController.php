@@ -22,6 +22,7 @@ class PokemonsController extends Controller
 
         // $title = '创建精灵';
         $title = __('messages.pokemons');
+        $create_path = "/pokemons/create";
 
         $pokemons = DB::table('pokemon')
             ->leftJoin('pokemon_types as t1', 'pokemon.type1', '=', 't1.id')
@@ -29,7 +30,7 @@ class PokemonsController extends Controller
             ->select('pokemon.*', 't1.name as type1_name', 't2.name as type2_name', 't1.color as type1_color', 't2.color as type2_color')
             ->get();
 
-        return view('pokemons.index', compact('title', 'pokemons'));
+        return view('pokemons.index', compact('title', 'pokemons', 'create_path'));
 
     }
 

@@ -1,0 +1,55 @@
+/*table css*/
+.div_part{
+    margin-bottom: 60px;
+}
+
+.showTable{
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+}
+
+.showTable tr{
+    padding: 0px;
+    margin: auto;
+    height: 30px;
+    line-height: 30px;
+    width: 100%;
+    font-size:12px;
+}
+.showTable tr th{
+    border: 1px solid #000;
+    text-indent:0em;
+    text-align: center;
+}
+.showTable tr td{
+    border: 1px solid #000;
+    text-indent:0em;
+    text-align: center;
+}
+
+
+.phavem_number{
+    width: 10%;
+}
+.phavem_short{
+    width: 20%;
+}
+.phavem_long{
+    width: 70%;
+}
+
+.moves_moves_short{
+    width: 10%;
+}
+.moves_long{
+    width: 50%;
+}
+
+/*paginate css*/
+.pagelink{
+    width: 100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}

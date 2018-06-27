@@ -14,7 +14,8 @@
         }
     </style>
     <div class="col-md-offset-2 col-md-8 col-lg-offset-0 col-lg-12 pokemons">
-        <h1>@lang('messages.pokemons')</h1>
+        @include('div_part._divpart')
+        <!-- <h1>@lang('messages.pokemons')</h1> -->
             <ul class="th">
                 <li class="first_li">@lang('messages.number')</li>
                 <li>@lang('messages.name')</li>
