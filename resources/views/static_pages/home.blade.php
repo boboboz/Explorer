@@ -1,14 +1,6 @@
 @extends('layouts.default')
 @section('title', $title)
 @section('content')
-    <style media="screen">
-        button{
-            width: 100%;
-            height: 200px;
-            border-radius: 20px;
-            border: 2px solid #000;
-        }
-    </style>
     <script type="text/javascript">
         $(document).ready(function(){
             $('#pokemons').on('click', function(){
@@ -25,16 +17,15 @@
     </script>
   <div class="jumbotron">
     <h1>@lang('messages.hello_pokemon_trainer')</h1>
-    <br/>
-    <div class="row">
-        <div class="col-lg-4 first">
-            <button id="pokemons" type="button" name="button" >@lang('messages.pokemons')</button>
+    <div class="row index_div">
+        <div class="col-lg-4">
+            <button class="index_button" id="pokemons" type="button" name="button" >@lang('messages.pokemons')</button>
         </div>
-        <div class="col-lg-4 second">
-            <button id="moves" type="button" name="button">@lang('messages.move_list')</button>
+        <div class="col-lg-4">
+            <button class="index_button" id="moves" type="button" name="button">@lang('messages.move_list')</button>
         </div>
-        <div class="col-lg-4 third">
-            <button id="phavem" type="button" name="button">@lang('messages.list_pmhavemv')</button>
+        <div class="col-lg-4">
+            <button class="index_button" id="phavem" type="button" name="button">@lang('messages.list_pmhavemv')</button>
         </div>
     </div>
 
